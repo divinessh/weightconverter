@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weight Converter App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="simple.css">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box
+}
+
+::selection{
+    background: gold;
+}
+body {
+  font-family: poppins, sans-serif;
+  background-color: rgb(113, 56, 187);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:100vh;
+}
+
+.container{
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    padding:20px;
+}
+
+input{
+  color:black;
+  border-radius:5px;
+  padding:10px;
+  outline:none;
+  border:none;
+  width:200px;
+  font-family:poppins;
+  transition:0.3s;
+}
+input:focus{
+  outline: none;
+  width:300px;
+}
+</style>
+</head>
+<body>
+
+<div style="font-size:20px;" id="Weight" class="container">
+  <div style="text-align: center;"><h2>Weight Converter</h2>
+    <p>Sila masukkan unit berat dalam ruangan input yang telah disediakan</p>
+    </div>
+    <hr>
+    <!--INPUT DAN OUTPUT NILAI UNIT BERAT-->
+    <p>
+        <label>Pounds</label>
+        <input id="inputPounds" type="number" placeholder="Pounds" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+</p>
+<p>
+        <label>Kilograms</label>
+        <input id="inputKilograms"  type="number" placeholder="Kilograms" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+</p>
+    <p>  
+        <label>Ounces</label>
+        <input id="inputOunces"  type="number" placeholder="Ounces" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+  </p>   
+        <label>Grams</label>
+        <input id="inputGrams"  type="number" placeholder="Grams" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+  <p>   
+        <label>Stones</label>
+        <input id="inputStones" type="number" placeholder="Stones" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+ </p>
+</div>
+
+</body>
+<script>
+    //disiapkan oleh Divinessh A/L Siva (3 Amber),2021
+  
+    //PROSES PENUKARAN
+  function weightConverter(unit,valNum) {
+    valNum = parseFloat(valNum);
+    //Pengisytiharan pembolehubah
+    var inputPounds = document.getElementById("inputPounds");
+    var inputKilograms = document.getElementById("inputKilograms");
+    var inputOunces = document.getElementById("inputOunces");
+    var inputGrams = document.getElementById("inputGrams");
+    var inputStones = document.getElementById("inputStones");
+    //JIKA nilai dimasukkan ialah dalam pounds:
+    if (unit=="inputPounds") {
+      inputKilograms.value=(valNum/2.2046);
+      inputOunces.value=(valNum*16);
+      inputGrams.value=(valNum/0.0022046);
+      inputStones.value=(valNum*0.071429);
+    }
+    //JIKA nilai dimasukkan ialah dalam kilograms:
+    if (unit=="inputKilograms") {
+      inputPounds.value=(valNum*2.2046);
+      inputOunces.value=(valNum*35.274);
+      inputGrams.value=(valNum*1000);
+      inputStones.value=(valNum*0.1574);
+    }
+    //JIKA nilai dimasukkan ialah dalam ounces:
+    if (unit=="inputOunces") {
+      inputPounds.value=(valNum*0.062500);
+      inputKilograms.value=(valNum/35.274);
+      inputGrams.value=(valNum/0.035274);
+      inputStones.value=(valNum*0.0044643);
+    }
+    //JIKA nilai dimasukkan ialah dalam grams:
+    if (unit=="inputGrams") {
+      inputPounds.value=(valNum*0.0022046);
+      inputKilograms.value=(valNum/1000);
+      inputOunces.value=(valNum*0.035274);
+      inputStones.value=(valNum*0.00015747);
+    }
+    //JIKA nilai dimasukkan ialah dalam stones:
+    if (unit=="inputStones") {
+      inputPounds.value=(valNum*14);
+      inputKilograms.value=(valNum/0.15747);
+      inputOunces.value=(valNum*224);
+      inputGrams.value=(valNum/0.00015747);
+    }
+  
+  }
+</script>
+</html> 
